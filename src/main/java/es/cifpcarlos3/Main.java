@@ -46,6 +46,7 @@ public class Main {
                         System.out.println(module + " " + teacherMessage);
                     }
                     break;
+
                 case ADD_TEACHER:
                     System.out.println("Introduce el DNI");
                     String dni = scanner.nextLine().trim();
@@ -68,6 +69,7 @@ public class Main {
                     Teacher newTeacher = new Teacher(dni, name, surnames, phone);
                     teacherDao.add(newTeacher);
                     break;
+
                 case DELETE_TEACHER:
                     System.out.println("Introduce el DNI del profesor");
 
@@ -81,8 +83,13 @@ public class Main {
 
                     teacherDao.delete(dniToDelete);
                     break;
+
                 case GET_ALL_TEACHERS:
-                    System.out.println("Listando profesores");
+                    System.out.println("Listando profesores...");
+                    List<Teacher> teachers = teacherDao.getAll();
+                    for (Teacher currentTeacher : teachers) {
+                        System.out.println(currentTeacher);
+                    }
                     break;
 
             }
