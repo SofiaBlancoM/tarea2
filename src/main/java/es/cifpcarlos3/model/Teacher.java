@@ -12,6 +12,8 @@ import lombok.ToString;
         doNotUseGetters = true,
         includeFieldNames = false
 )
+
+//Modelo de datos del profesor
 public class Teacher {
 
     private String dni;

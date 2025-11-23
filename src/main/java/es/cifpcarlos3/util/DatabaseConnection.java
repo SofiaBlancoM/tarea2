@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
+    //Crea una nueva conexión a base de datos
     public Connection getConnection () throws SQLException {
         return DriverManager.getConnection(Constants.CONNECTION_STRING, Constants.USER, Constants.PASSWORD);
     }

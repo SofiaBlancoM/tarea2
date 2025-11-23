@@ -1,5 +1,6 @@
 package es.cifpcarlos3;
 
+//Constantes utilizadas en la aplicación
 public class Constants {
 
     //Rutas ficheros

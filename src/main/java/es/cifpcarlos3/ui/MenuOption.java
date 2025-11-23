@@ -1,5 +1,6 @@
 package es.cifpcarlos3.ui;
 
+//Opciones disponibles en el menú principal
 public enum MenuOption {
 
     NONE,

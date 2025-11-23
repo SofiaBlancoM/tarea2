@@ -17,9 +17,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
         DatabaseConnection databaseConnection = new DatabaseConnection();
-
         TeacherDao teacherDao = new TeacherDaoImpl(databaseConnection);
 
         //Ruta por defecto del projecto
@@ -30,11 +28,14 @@ public class Main {
 
         System.out.println("Bienvenido/a a la segunda tarea de Acceso a Datos");
 
+        //Obtiene del input del usuario una opción válida
         MenuOption selectedOption = MenuManager.getSelectedOption();
 
+        //Mientras no haya elegido la opción de salirse
         while (selectedOption != MenuOption.EXIT) {
 
             switch (selectedOption) {
+                //Lista los módulos y recupera los datos del profesor si existe
                 case GET_MODULES:
                     System.out.println("Listando módulos...");
                     for (Module module : modules) {
@@ -47,6 +48,7 @@ public class Main {
                     }
                     break;
 
+                //Crea un profesor si no existe en base de datos
                 case ADD_TEACHER:
                     System.out.println("Introduce el DNI");
                     String dni = scanner.nextLine().trim();
@@ -69,7 +71,7 @@ public class Main {
                     Teacher newTeacher = new Teacher(dni, name, surnames, phone);
                     teacherDao.add(newTeacher);
                     break;
-
+                //Borra un profesor si existe en base de datos
                 case DELETE_TEACHER:
                     System.out.println("Introduce el DNI del profesor");
 
@@ -83,7 +85,7 @@ public class Main {
 
                     teacherDao.delete(dniToDelete);
                     break;
-
+                //Obtiene todos los profesores de base de datos
                 case GET_ALL_TEACHERS:
                     System.out.println("Listando profesores...");
                     List<Teacher> teachers = teacherDao.getAll();
@@ -94,10 +96,12 @@ public class Main {
 
             }
 
+            //Vuelve a pedir al usuario que seleccione una opción
             selectedOption = MenuManager.getSelectedOption();
 
         }
 
+        //Finaliza el programa
         System.out.println("¡Gracias por utilizar nuestra aplicación, esperamos volver a verte pronto!");
         System.out.println("Cerrando...");
 
