@@ -6,5 +6,6 @@ public interface TeacherDao {
 
     Teacher getByDni (String dni);
     void add (Teacher teacher);
+    void delete (String dni);
 
 }

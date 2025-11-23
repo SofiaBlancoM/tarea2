@@ -59,7 +59,26 @@ public class TeacherDaoImpl implements TeacherDao {
             preparedStatement.setString(4, teacher.getPhone());
             int affectedRows = preparedStatement.executeUpdate();
 
-            System.out.println("Líneas afectadas: " + affectedRows);
+            System.out.println("Se ha añadido " + affectedRows + " profesor correctamente");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    @Override
+    public void delete(String dni) {
+
+        String query = "DELETE FROM T_PROFESOR WHERE dni = ?";
+
+        try (Connection connection = databaseConnection.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, dni);
+            int affectedRows = preparedStatement.executeUpdate();
+
+            System.out.println("Se ha borrado " + affectedRows + " profesor correctamente");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

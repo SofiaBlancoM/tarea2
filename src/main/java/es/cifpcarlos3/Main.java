@@ -67,10 +67,19 @@ public class Main {
 
                     Teacher newTeacher = new Teacher(dni, name, surnames, phone);
                     teacherDao.add(newTeacher);
-                    System.out.println("Profesor añadido correctamente");
                     break;
                 case DELETE_TEACHER:
                     System.out.println("Introduce el DNI del profesor");
+
+                    String dniToDelete = scanner.nextLine().trim();
+
+                    Teacher teacherToDelete = teacherDao.getByDni(dniToDelete);
+                    if (teacherToDelete == null) {
+                        System.out.println("El profesor no existe");
+                        break;
+                    }
+
+                    teacherDao.delete(dniToDelete);
                     break;
                 case GET_ALL_TEACHERS:
                     System.out.println("Listando profesores");
