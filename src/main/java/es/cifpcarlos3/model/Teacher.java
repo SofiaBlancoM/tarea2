@@ -8,15 +8,15 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(
+@ToString (
         doNotUseGetters = true,
         includeFieldNames = false
 )
-public class Module {
+public class Teacher {
 
-    private String name;
-    private int hours;
     private String dni;
-
+    private String name;
+    private String surnames;
+    private String phone;
 
 }
