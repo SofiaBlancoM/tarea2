@@ -45,4 +45,26 @@ public class TeacherDaoImpl implements TeacherDao {
 
     }
 
+    @Override
+    public void add(Teacher teacher) {
+
+        String query = "INSERT INTO T_PROFESOR VALUES (?, ?, ?, ?)" ;
+
+        try (Connection connection = databaseConnection.getConnection()) {
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, teacher.getDni());
+            preparedStatement.setString(2, teacher.getName());
+            preparedStatement.setString(3, teacher.getSurnames());
+            preparedStatement.setString(4, teacher.getPhone());
+            int affectedRows = preparedStatement.executeUpdate();
+
+            System.out.println("Líneas afectadas: " + affectedRows);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }

@@ -5,5 +5,6 @@ import es.cifpcarlos3.model.Teacher;
 public interface TeacherDao {
 
     Teacher getByDni (String dni);
+    void add (Teacher teacher);
 
 }
