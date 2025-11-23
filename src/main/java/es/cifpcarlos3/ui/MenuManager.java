@@ -21,13 +21,13 @@ public class MenuManager {
 
         MenuOption selectedOption = null;
 
-        while (selectedOption == null) {
+        while (selectedOption == null || selectedOption == MenuOption.NONE) {
 
             printMenu();
 
             selectedOption = parseMenuOption(scanner.nextLine().trim());
 
-            if (selectedOption == null) {
+            if (selectedOption == MenuOption.NONE) {
                 System.out.println("La opción seleccionada no exite, por favor inténtelo de nuevo");
             }
 
@@ -39,13 +39,13 @@ public class MenuManager {
     private static MenuOption parseMenuOption(String input) {
 
         if (!input.matches("\\d") || input.equalsIgnoreCase("0")) {
-            return null;
+            return MenuOption.NONE;
         }
 
         int menuOptionIndex = Integer.parseInt(input);
 
         if (menuOptionIndex >= MenuOption.values().length) {
-            return null;
+            return MenuOption.NONE;
         }
 
         return MenuOption.values()[menuOptionIndex];
