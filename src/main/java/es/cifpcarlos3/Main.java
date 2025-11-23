@@ -46,16 +46,33 @@ public class Main {
                         System.out.println(module + " " + teacherMessage);
                     }
                     break;
-                case ADD_PROFESSOR:
+                case ADD_TEACHER:
                     System.out.println("Introduce el DNI");
+                    String dni = scanner.nextLine().trim();
+
+                    Teacher teacher = teacherDao.getByDni(dni);
+                    if (teacher != null) {
+                        System.out.println("El profesor ya existe");
+                        break;
+                    }
+
                     System.out.println("Introduce el nombre");
+                    String name = scanner.nextLine().trim();
+
                     System.out.println("Introduce los apellidos");
+                    String surnames = scanner.nextLine().trim();
+
                     System.out.println("Introduce el número de teléfono");
+                    String phone = scanner.nextLine().trim();
+
+                    Teacher newTeacher = new Teacher(dni, name, surnames, phone);
+                    teacherDao.add(newTeacher);
+                    System.out.println("Profesor añadido correctamente");
                     break;
-                case DELETE_PROFESSOR:
+                case DELETE_TEACHER:
                     System.out.println("Introduce el DNI del profesor");
                     break;
-                case GET_ALL_PROFESSORS:
+                case GET_ALL_TEACHERS:
                     System.out.println("Listando profesores");
                     break;
 

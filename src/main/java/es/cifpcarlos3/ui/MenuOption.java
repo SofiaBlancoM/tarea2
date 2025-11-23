@@ -4,9 +4,9 @@ public enum MenuOption {
 
     NONE,
     GET_MODULES,
-    ADD_PROFESSOR,
-    DELETE_PROFESSOR,
-    GET_ALL_PROFESSORS,
+    ADD_TEACHER,
+    DELETE_TEACHER,
+    GET_ALL_TEACHERS,
     EXIT
 
 }
